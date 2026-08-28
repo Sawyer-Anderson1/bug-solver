@@ -20,7 +20,7 @@ from adapters.git.types import GitResult, GitOpStatus
 # -----------------------------------------
 #  Helper / Prompt Engineering Utility
 # -----------------------------------------
-from utils.template_loader import load_response_tempate
+from utils.template_loader import load_response_template
 
 
 # -----------------------------------------
@@ -47,7 +47,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         result: GitResult = git_adapter.list_local_branches()
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="local_branches", section=result.status.value
         )
 
@@ -74,7 +74,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="branch_checkout", section=result.status.value
         )
 
@@ -106,7 +106,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer", tool_name="commit", section=result.status.value
         )
 
@@ -139,7 +139,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         result: GitResult = git_adapter.push(branch_name=branch_name, remote=remote)
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer", tool_name="push", section=result.status.value
         )
 
@@ -168,7 +168,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         result: GitResult = git_adapter.pull(branch_name=branch_name, remote=remote)
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer", tool_name="pull", section=result.status.value
         )
 
@@ -196,7 +196,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         result: GitResult = git_adapter.search_repo_text(text_pattern=text_pattern)
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="grep_repo", section=result.status.value
         )
 
@@ -221,7 +221,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
         result: GitResult = git_adapter.git_status()
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="status", section=result.status.value
         )
 
@@ -269,7 +269,7 @@ def git_tools(git_adapter: BaseGitRepo) -> List[BaseTool]:
 
         # Then load the markdown response template
         # the skill/response template is technically under pr_writer but the tool should be able to be used by planner as well.
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer", tool_name="fallback", section=result.status.value
         )
 

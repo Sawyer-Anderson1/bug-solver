@@ -22,7 +22,7 @@ from adapters.platform.types import GitHubClientResult, GitHubOpStatus
 # -----------------------------------------
 #  Helper / Prompt Engineering Utility
 # -----------------------------------------
-from utils.template_loader import load_response_tempate
+from utils.template_loader import load_response_template
 
 
 # -----------------------------------------
@@ -52,7 +52,7 @@ def github_tools(github_adapter: BaseGitHubClient) -> List[BaseTool]:
         result: GitHubClientResult = github_adapter.get_issue(issue_number=issue_number)
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="get_issues", section=result.status.value
         )
 
@@ -91,7 +91,7 @@ def github_tools(github_adapter: BaseGitHubClient) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer",
             tool_name="create_pull_request",
             section=result.status.value,
@@ -120,7 +120,7 @@ def github_tools(github_adapter: BaseGitHubClient) -> List[BaseTool]:
         result: GitHubClientResult = github_adapter.get_default_branch()
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer",
             tool_name="get_default_branch",
             section=result.status.value,
@@ -152,7 +152,7 @@ def github_tools(github_adapter: BaseGitHubClient) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="pr_writer",
             tool_name="post_issue_comment",
             section=result.status.value,

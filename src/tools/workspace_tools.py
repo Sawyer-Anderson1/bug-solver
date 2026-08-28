@@ -22,7 +22,7 @@ from adapters.filesystem.types import FileSystemResult, FileOpStatus
 # -----------------------------------------
 #  Helper / Prompt Engineering Utility
 # -----------------------------------------
-from utils.template_loader import load_response_tempate
+from utils.template_loader import load_response_template
 
 
 # -----------------------------------------
@@ -51,7 +51,7 @@ def workspace_tools(filesystem_adapter: BaseFileSystemTools) -> List[BaseTool]:
         result: FileSystemResult = filesystem_adapter.read_files(file_paths=file_paths)
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="read_files", section=result.status.value
         )
 
@@ -81,7 +81,7 @@ def workspace_tools(filesystem_adapter: BaseFileSystemTools) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="coder", tool_name="write_files", section=result.status.value
         )
 
@@ -110,7 +110,7 @@ def workspace_tools(filesystem_adapter: BaseFileSystemTools) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="find_files", section=result.status.value
         )
 
@@ -145,7 +145,7 @@ def workspace_tools(filesystem_adapter: BaseFileSystemTools) -> List[BaseTool]:
         )
 
         # Then load the markdown response template
-        template: str = load_response_tempate(
+        template: str = load_response_template(
             skill="planner", tool_name="list_dir", section=result.status.value
         )
 

@@ -5,7 +5,7 @@
 from pathlib import Path
 
 
-def load_response_tempate(skill: str, tool_name: str, section: str) -> str:
+def load_response_template(skill: str, tool_name: str, section: str) -> str:
     """Reads a response template markdown file and extracts a specific ## section."""
     file_path = Path(f"src/skills/{skill}/responses/{tool_name}.md")
 
